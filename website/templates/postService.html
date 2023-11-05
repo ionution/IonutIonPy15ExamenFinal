@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Post service{% endblock %}
+
+{% block content %}
+<form method="POST">
+  <h2><center>Post a service</center></h2>
+  <h4>Name</h4>
+  <textarea name="service_name" id="service_name" class="form-control"></textarea>
+  <br />
+  <h4>Description</h4>
+  <textarea name="service_detail" id="service_detail" class="form-control"></textarea>
+  <br />
+  <h4>Price</h4>
+  <textarea name="service_price" id="service_price" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Post Service</button>
+  </div>
+</form>
+<br />
+<h1 align="center">Your posts</h1>
+<ul class="list-group list-group-flush" id="services">
+  {% for service in user.services %}
+  <li class="list-group-item">
+    <h4>Name: {{ service.service_name }}</h4>
+    <br />
+    <h6>Detail:</h6> {{ service.service_detail }}
+    <br />
+    <h6>Price: {{ service.service_price }} $</h6>
+    <button type="button" class="close" onclick="deleteService({{ service.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<br />
+
+
+
+{% endblock %}

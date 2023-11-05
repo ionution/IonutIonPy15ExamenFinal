@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1><center>--->Services<---</center></h1>
+<ul class="list-group list-group-flush" id="all_services">
+  {% for service in services %}
+  <li class="list-group-item">
+    <h4>Name: {{ service.service_name }}</h4>
+    <br />
+    <h6>Detail:</h6> {{ service.service_detail }}
+    <br />
+    <h6>Price: {{ service.service_price }} $ </h6>
+    <h6>Posted by: {{ service.user.first_name }}</h6>
+    <h6>Contact: {{ service.user.phone }}</h6>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
